@@ -1,0 +1,33 @@
+{
+  "source": "ResourceClueVisualMultiplier-B1bleDHd.js.map",
+  "bundle_file": "ResourceClueVisualMultiplier-B1bleDHd.js",
+  "extracted_at_utc": "2026-04-11T17:22:57.012985+00:00",
+  "source_files": [
+    "../../src/data/skillsData/ResourceClueVisualMultiplier.tsx"
+  ],
+  "exported_symbols": [
+    "clueAmountWithResourceMultiplier"
+  ],
+  "resource_id_keys": [
+    "BRONZE_ARROWS",
+    "DIAMOND_ARROWS",
+    "EARTH_SIGIL",
+    "FIRE_SIGIL",
+    "ICE_SIGIL",
+    "INFERNO_SIGIL",
+    "JADE_ARROWS",
+    "LIGHTNING_SIGIL",
+    "NATURE_SIGIL",
+    "PLATINUM_ARROWS",
+    "SHADOW_SIGIL",
+    "SLINGSHOT_AMMO",
+    "SUNSTONE_ARROWS",
+    "WATER_SIGIL",
+    "WIND_SIGIL"
+  ],
+  "multiplier_constant_refs": [
+    "ARROW_AMMO_AMOUNT",
+    "SIGIL_VISUAL_CLUE_AMOUNT",
+    "SLINGSHOT_AMMO_AMOUNT"
+  ]
+}

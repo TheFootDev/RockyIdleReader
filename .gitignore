@@ -1,0 +1,23 @@
+# Python cache and environments
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+
+# Build artifacts
+dist/
+build/
+Compiled/build/
+*.tmp
+*.log
+
+# Runtime-generated diagnostics and local artifacts
+FATAL_CRASH.txt
+rirbf_active.dat
+*.dat
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/

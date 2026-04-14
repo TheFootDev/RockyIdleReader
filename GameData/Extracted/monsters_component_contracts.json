@@ -1,0 +1,304 @@
+{
+  "source": "Monsters-C8b2emA8.js.map",
+  "extracted_at_utc": "2026-04-11T17:20:15.545147+00:00",
+  "contracts": [
+    {
+      "source_file": "../../src/Components/CombatStyle/User/UserNameComponent.tsx",
+      "exports": [
+        "UserNameComponent"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/CombatStyle.tsx",
+      "exports": [
+        "CombatStyle"
+      ],
+      "prop_types": [
+        "CombatStyleProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/util/PrayerUtils.tsx",
+      "exports": [
+        "isPrayerUnlocked"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/Components/Combat/Magic/MagicSpellInfo.tsx",
+      "exports": [],
+      "prop_types": [
+        "MagicSpellInfoProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/Magic/SpellUI.tsx",
+      "exports": [],
+      "prop_types": [
+        "SpellUIProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/NothingSelected.tsx",
+      "exports": [],
+      "prop_types": [
+        "NothingSelectedProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/Magic/MagicSpellImage.tsx",
+      "exports": [],
+      "prop_types": [
+        "MagicSpellImageProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/Magic/MagicSpellSelector.tsx",
+      "exports": [],
+      "prop_types": [
+        "MagicSpellSelectorProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/Prayer/AllPrayerDisplay.tsx",
+      "exports": [],
+      "prop_types": [
+        "AllPrayerDisplayProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/util/CombatUtils/GetWeaponAnimation.ts",
+      "exports": [
+        "getWeaponAnimation"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/hooks/combatHooks/useAnimation.tsx",
+      "exports": [
+        "useAnimation"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/hooks/combatHooks/useWeaponData.tsx",
+      "exports": [
+        "useWeaponData"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/AutoResources/AutoStuffNameAndValidStuff.tsx",
+      "exports": [],
+      "prop_types": [
+        "AutoStuffNameAndValidStuffProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/AutoResources/InventorySelector.tsx",
+      "exports": [],
+      "prop_types": [
+        "InventorySelectorProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/AutoResources/AutoCombatCooldown.tsx",
+      "exports": [
+        "AutoCombatCooldown"
+      ],
+      "prop_types": [
+        "AutoCombatCooldownProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/AutoResources/AutoResourceContainer.tsx",
+      "exports": [],
+      "prop_types": [
+        "AutoResourceContainerProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/UtilityComponents/CustomSlider.tsx",
+      "exports": [],
+      "prop_types": [
+        "CustomSliderProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/AutoResources/AutoResourceEachType.tsx",
+      "exports": [],
+      "prop_types": [
+        "AutoResourceLayoutProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/StatShowcase.tsx",
+      "exports": [
+        "StatShowcase"
+      ],
+      "prop_types": [
+        "StatShowcaseProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/CategoryDisplay.tsx",
+      "exports": [],
+      "prop_types": [
+        "CategoryDisplayProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MeleeDefensiveStats.tsx",
+      "exports": [
+        "MeleeDefensiveStats"
+      ],
+      "prop_types": [
+        "MeleeDefensiveStatsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MonsterExtraStats.tsx",
+      "exports": [
+        "MonsterExtraStats"
+      ],
+      "prop_types": [
+        "MonsterExtraStatsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/SlayerMonsterStats.tsx",
+      "exports": [
+        "SlayerMonsterStats"
+      ],
+      "prop_types": [
+        "SlayerMonsterStatsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MonsterInfoPopup.tsx",
+      "exports": [
+        "MonsterInfoPopup"
+      ],
+      "prop_types": [
+        "MonsterInfoPopupProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MeleeAccuracyStats.tsx",
+      "exports": [
+        "MeleeAccuracyStats"
+      ],
+      "prop_types": [
+        "MeleeAccuracyStatsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/Monster/AllMonsterInfo.tsx",
+      "exports": [
+        "AllMonsterInfo"
+      ],
+      "prop_types": [
+        "AllMonsterInfoProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/UtilityComponents/UIDisplays/ItemGainWithProbabilityColor.tsx",
+      "exports": [],
+      "prop_types": [
+        "ItemGainWithProbabilityColorProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonsterDropTableDrops.tsx",
+      "exports": [],
+      "prop_types": [
+        "MonsterDropTableDropsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MonsterItemDrops.tsx",
+      "exports": [
+        "MonsterItemDrops"
+      ],
+      "prop_types": [
+        "MonsterItemDropsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/Monster/MonsterKillCount.tsx",
+      "exports": [
+        "MonsterKillCount"
+      ],
+      "prop_types": [
+        "MonsterKillCountProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MonsterDropsCollected.ts",
+      "exports": [
+        "useCollectedDropsFromMonster"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/Components/UtilityComponents/Buttons/CollectionLogMonsterButton.tsx",
+      "exports": [],
+      "prop_types": [
+        "CollectionLogMonsterButtonProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/MonsterDropsOnGround/ItemsOnGround.tsx",
+      "exports": [],
+      "prop_types": [
+        "ItemsOnGroundProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/MonsterDropsOnGround/MonsterDropsHeader.tsx",
+      "exports": [
+        "MonsterDropsHeader"
+      ],
+      "prop_types": [
+        "MonsterDropsHeaderProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/CombatStyle/MonsterDropsOnGround/ItemsOnGroundContainer.tsx",
+      "exports": [
+        "ItemsOnGroundContainer"
+      ],
+      "prop_types": []
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/MonsterSearchButtons.tsx",
+      "exports": [],
+      "prop_types": [
+        "MonsterSearchButtonsProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/SlayerCategoryDropdownContent.tsx",
+      "exports": [],
+      "prop_types": [
+        "SlayerCategoryDropdownContentProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/Combat/MonstersPage/SlayerCategoryDropdown.tsx",
+      "exports": [],
+      "prop_types": [
+        "SlayerCategoryDropdownProps"
+      ]
+    },
+    {
+      "source_file": "../../src/Components/util/CombatUtils/MonsterFilterUtils.ts",
+      "exports": [
+        "filterMonsters",
+        "getMonstersLessThanKc"
+      ],
+      "prop_types": []
+    }
+  ]
+}

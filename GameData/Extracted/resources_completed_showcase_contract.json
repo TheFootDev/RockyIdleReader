@@ -1,0 +1,30 @@
+{
+  "source": "ResourcesCompletedShowcase-Cp6Ul4zl.js.map",
+  "bundle_file": "ResourcesCompletedShowcase-Cp6Ul4zl.js",
+  "extracted_at_utc": "2026-04-11T17:22:57.012985+00:00",
+  "source_file_count": 4,
+  "source_files": [
+    "../../src/Layout/AbsoluteLayout/VisualRounding.tsx",
+    "../../src/Components/ResourcesPage/ResourceUtils/OrangeDotFrame.tsx",
+    "../../src/Components/UtilityComponents/ToolTip/TooltipResourceCompleted.tsx",
+    "../../src/Components/ResourcesPage/ResourceUtils/ResourcesCompletedShowcase.tsx"
+  ],
+  "component_candidates": [
+    "OrangeDotFrame",
+    "ResourcesCompletedShowcase",
+    "TooltipResourceCompleted",
+    "TooltipWrapper",
+    "VisualRounding"
+  ],
+  "prop_types": [
+    "FloatingModalFrameProps",
+    "ResourcesCompletedShowcaseProps",
+    "TooltipResourceCompletedProps",
+    "VisualRoundingProps"
+  ],
+  "references": {
+    "uses_tooltip_wrapper": true,
+    "uses_resource_multiplier": true,
+    "uses_monster_context": true
+  }
+}

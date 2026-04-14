@@ -1,0 +1,614 @@
+{
+  "source": "AllChests-cEZlHwgz.js.map",
+  "extracted_at_utc": "2026-04-11T17:17:03.106494+00:00",
+  "constants": {
+    "EASY_XP": "15000",
+    "MEDIUM_XP": "50_000",
+    "HARD_XP": "125_000",
+    "EXPERT_XP": "375_000",
+    "LAMP_PROP": "1 / 15",
+    "RELIC_PROP": "1 / 1000",
+    "COSMETIC_PROP": "1 / 500",
+    "OPENABLES_PROP": "1 / 50"
+  },
+  "chest_enum": [
+    {
+      "code": "EASY_CHEST",
+      "id": 1001
+    },
+    {
+      "code": "MEDIUM_CHEST",
+      "id": 1002
+    },
+    {
+      "code": "HARD_CHEST",
+      "id": 1003
+    },
+    {
+      "code": "EXPERT_CHEST",
+      "id": 1004
+    }
+  ],
+  "chests": [
+    {
+      "chest_code": "EASY_CHEST",
+      "chest_id": 1001,
+      "chest_name": "Easy contract chest",
+      "difficulty": "EASY",
+      "key_item_code": "EASY_KEY",
+      "drop_count": 22,
+      "drop_item_codes": [
+        "BEECH_LOG",
+        "BIRCH_LOG",
+        "BIRDS_NEST",
+        "BONE_GRAVE",
+        "BRONZE_ORE",
+        "COINS",
+        "CONTRACTS_CASE",
+        "CROP_BASKET",
+        "FIRE_SIGIL",
+        "GEODES",
+        "LEATHER",
+        "OAK_LOG",
+        "OYSTER",
+        "PINE_LOG",
+        "RAW_CARP",
+        "RAW_CATFISH",
+        "RAW_SILVER_MINNOW",
+        "RELIC_EASY",
+        "ROCK_FRAGMENT",
+        "SCROLL_BOTTLE",
+        "SILVER_ORE",
+        "WHISPER_WATER"
+      ],
+      "drops": [
+        {
+          "item_code": "RELIC_EASY",
+          "amount_expr": "1",
+          "probability_expr": "RELIC_PROP"
+        },
+        {
+          "item_code": "SCROLL_BOTTLE",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "WHISPER_WATER",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "GEODES",
+          "amount_expr": "10",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BIRDS_NEST",
+          "amount_expr": "10",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "OYSTER",
+          "amount_expr": "10",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BONE_GRAVE",
+          "amount_expr": "10",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CROP_BASKET",
+          "amount_expr": "10",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CONTRACTS_CASE",
+          "amount_expr": "5",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "PINE_LOG",
+          "amount_expr": "125",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "RAW_CATFISH",
+          "amount_expr": "280",
+          "probability_expr": "1 / 36"
+        },
+        {
+          "item_code": "RAW_CARP",
+          "amount_expr": "190",
+          "probability_expr": "1 / 36"
+        },
+        {
+          "item_code": "FIRE_SIGIL",
+          "amount_expr": "5000",
+          "probability_expr": "1 / 30"
+        },
+        {
+          "item_code": "BEECH_LOG",
+          "amount_expr": "240",
+          "probability_expr": "1 / 15"
+        },
+        {
+          "item_code": "BIRCH_LOG",
+          "amount_expr": "150",
+          "probability_expr": "1 / 15"
+        },
+        {
+          "item_code": "ROCK_FRAGMENT",
+          "amount_expr": "450",
+          "probability_expr": "1 / 15"
+        },
+        {
+          "item_code": "BRONZE_ORE",
+          "amount_expr": "140",
+          "probability_expr": "1 / 15"
+        },
+        {
+          "item_code": "SILVER_ORE",
+          "amount_expr": "125",
+          "probability_expr": "1 / 15"
+        },
+        {
+          "item_code": "OAK_LOG",
+          "amount_expr": "100",
+          "probability_expr": "1 / 10"
+        },
+        {
+          "item_code": "LEATHER",
+          "amount_expr": "150",
+          "probability_expr": "1 / 10"
+        },
+        {
+          "item_code": "RAW_SILVER_MINNOW",
+          "amount_expr": "145",
+          "probability_expr": "1 / 10"
+        },
+        {
+          "item_code": "COINS",
+          "amount_expr": "10_000",
+          "probability_expr": ""
+        }
+      ],
+      "lamp_expr": "1, EASY_XP, 20, AllSkillIdList, LAMP_PROP"
+    },
+    {
+      "chest_code": "MEDIUM_CHEST",
+      "chest_id": 1002,
+      "chest_name": "Medium contract chest",
+      "difficulty": "MEDIUM",
+      "key_item_code": "MEDIUM_KEY",
+      "drop_count": 20,
+      "drop_item_codes": [
+        "BIRDS_NEST",
+        "BONE_GRAVE",
+        "CHERRY_BLOSSOM_LOG",
+        "COINS",
+        "CONTRACTS_CASE",
+        "CROP_BASKET",
+        "FIRE_SIGIL",
+        "GEODES",
+        "GOLD_ORE",
+        "JADE_ORE",
+        "OAK_LOG",
+        "OYSTER",
+        "PINE_LOG",
+        "RAW_CARP",
+        "RAW_LOBSTER",
+        "RAW_TUNA",
+        "RELIC_MEDIUM",
+        "SILVER_ORE",
+        "TRIDENT_ICE",
+        "TUSKAR_FIRE"
+      ],
+      "drops": [
+        {
+          "item_code": "RELIC_MEDIUM",
+          "amount_expr": "1",
+          "probability_expr": "RELIC_PROP"
+        },
+        {
+          "item_code": "TRIDENT_ICE",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "TUSKAR_FIRE",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "GEODES",
+          "amount_expr": "25",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BIRDS_NEST",
+          "amount_expr": "25",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "OYSTER",
+          "amount_expr": "25",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BONE_GRAVE",
+          "amount_expr": "25",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CROP_BASKET",
+          "amount_expr": "25",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CONTRACTS_CASE",
+          "amount_expr": "10",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "FIRE_SIGIL",
+          "amount_expr": "10000",
+          "probability_expr": "1 / 20"
+        },
+        {
+          "item_code": "SILVER_ORE",
+          "amount_expr": "500",
+          "probability_expr": "1 / 16"
+        },
+        {
+          "item_code": "OAK_LOG",
+          "amount_expr": "450",
+          "probability_expr": "1 / 16"
+        },
+        {
+          "item_code": "PINE_LOG",
+          "amount_expr": "350",
+          "probability_expr": "1 / 16"
+        },
+        {
+          "item_code": "RAW_CARP",
+          "amount_expr": "300",
+          "probability_expr": "1 / 16"
+        },
+        {
+          "item_code": "RAW_TUNA",
+          "amount_expr": "300",
+          "probability_expr": "1 / 16"
+        },
+        {
+          "item_code": "CHERRY_BLOSSOM_LOG",
+          "amount_expr": "200",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "JADE_ORE",
+          "amount_expr": "200",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "GOLD_ORE",
+          "amount_expr": "160",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "RAW_LOBSTER",
+          "amount_expr": "300",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "COINS",
+          "amount_expr": "50_000",
+          "probability_expr": ""
+        }
+      ],
+      "lamp_expr": "1, MEDIUM_XP, 40, AllSkillIdList, LAMP_PROP"
+    },
+    {
+      "chest_code": "HARD_CHEST",
+      "chest_id": 1003,
+      "chest_name": "Hard contract chest",
+      "difficulty": "HARD",
+      "key_item_code": "HARD_KEY",
+      "drop_count": 23,
+      "drop_item_codes": [
+        "ARCANERY_TOKEN",
+        "BAOBAB_LOG",
+        "BIRDS_NEST",
+        "BONE_GRAVE",
+        "COINS",
+        "CONTRACTS_CASE",
+        "CROP_BASKET",
+        "DIAMOND_ORE",
+        "EBONY_LOG",
+        "EUCALYPTUS_LOG",
+        "FARMING_TOKEN",
+        "FISHING_TOKEN",
+        "GEODES",
+        "MAMMOK_FIRE",
+        "MINING_TOKEN",
+        "OYSTER",
+        "PLATINUM_ORE",
+        "RAW_MAHI_MAHI",
+        "RAW_OCTOPUS",
+        "RELIC_HARD",
+        "STINGAR_PURPLE",
+        "THIEVING_TOKEN",
+        "WOODCUTTING_TOKEN"
+      ],
+      "drops": [
+        {
+          "item_code": "RELIC_HARD",
+          "amount_expr": "1",
+          "probability_expr": "RELIC_PROP"
+        },
+        {
+          "item_code": "STINGAR_PURPLE",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "MAMMOK_FIRE",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "MINING_TOKEN",
+          "amount_expr": "10",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "FISHING_TOKEN",
+          "amount_expr": "10",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "WOODCUTTING_TOKEN",
+          "amount_expr": "10",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "FARMING_TOKEN",
+          "amount_expr": "10",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "THIEVING_TOKEN",
+          "amount_expr": "10",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "ARCANERY_TOKEN",
+          "amount_expr": "10",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "GEODES",
+          "amount_expr": "50",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BIRDS_NEST",
+          "amount_expr": "50",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "OYSTER",
+          "amount_expr": "50",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BONE_GRAVE",
+          "amount_expr": "50",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CROP_BASKET",
+          "amount_expr": "50",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CONTRACTS_CASE",
+          "amount_expr": "20",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "RAW_OCTOPUS",
+          "amount_expr": "275",
+          "probability_expr": "1 / 25"
+        },
+        {
+          "item_code": "BAOBAB_LOG",
+          "amount_expr": "280",
+          "probability_expr": "1 / 25"
+        },
+        {
+          "item_code": "DIAMOND_ORE",
+          "amount_expr": "150",
+          "probability_expr": "1 / 20"
+        },
+        {
+          "item_code": "RAW_MAHI_MAHI",
+          "amount_expr": "300",
+          "probability_expr": "1 / 15"
+        },
+        {
+          "item_code": "PLATINUM_ORE",
+          "amount_expr": "150",
+          "probability_expr": "1 / 10"
+        },
+        {
+          "item_code": "EBONY_LOG",
+          "amount_expr": "200",
+          "probability_expr": "1 / 8"
+        },
+        {
+          "item_code": "EUCALYPTUS_LOG",
+          "amount_expr": "300",
+          "probability_expr": "1 / 8"
+        },
+        {
+          "item_code": "COINS",
+          "amount_expr": "200_000",
+          "probability_expr": ""
+        }
+      ],
+      "lamp_expr": "1, HARD_XP, 70, AllSkillIdList, LAMP_PROP"
+    },
+    {
+      "chest_code": "EXPERT_CHEST",
+      "chest_id": 1004,
+      "chest_name": "Expert contract chest",
+      "difficulty": "EXPERT",
+      "key_item_code": "EXPERT_KEY",
+      "drop_count": 23,
+      "drop_item_codes": [
+        "AMETHYST",
+        "ANGELA_TOKEN",
+        "BARKWRAITH_TOKEN",
+        "BERNARD_PINK",
+        "BIRDS_NEST",
+        "BLACK_SCALES",
+        "BONE_GRAVE",
+        "CANARY_LOG",
+        "CANARY_SEEDS",
+        "COINS",
+        "CONTRACTS_CASE",
+        "CROP_BASKET",
+        "GEM_GOLEM_TOKEN",
+        "GEODES",
+        "HARLEY_TOKEN",
+        "INFERNAL_DRAGON_TOKEN",
+        "INFERNO_SIGIL",
+        "OYSTER",
+        "RAW_WHALE",
+        "RELIC_EXPERT",
+        "SEA_SNAKE_TOKEN",
+        "SLAYER_NEON",
+        "SUNSTONE_ORE"
+      ],
+      "drops": [
+        {
+          "item_code": "RELIC_EXPERT",
+          "amount_expr": "1",
+          "probability_expr": "RELIC_PROP"
+        },
+        {
+          "item_code": "BERNARD_PINK",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "SLAYER_NEON",
+          "amount_expr": "1",
+          "probability_expr": "COSMETIC_PROP"
+        },
+        {
+          "item_code": "INFERNO_SIGIL",
+          "amount_expr": "25000",
+          "probability_expr": "1 / 75"
+        },
+        {
+          "item_code": "CANARY_SEEDS",
+          "amount_expr": "45",
+          "probability_expr": "1 / 75"
+        },
+        {
+          "item_code": "HARLEY_TOKEN",
+          "amount_expr": "15",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "ANGELA_TOKEN",
+          "amount_expr": "15",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "INFERNAL_DRAGON_TOKEN",
+          "amount_expr": "15",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "BARKWRAITH_TOKEN",
+          "amount_expr": "15",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "GEM_GOLEM_TOKEN",
+          "amount_expr": "15",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "SEA_SNAKE_TOKEN",
+          "amount_expr": "15",
+          "probability_expr": "1 / 50"
+        },
+        {
+          "item_code": "GEODES",
+          "amount_expr": "100",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BIRDS_NEST",
+          "amount_expr": "100",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "OYSTER",
+          "amount_expr": "100",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BONE_GRAVE",
+          "amount_expr": "100",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CROP_BASKET",
+          "amount_expr": "100",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "CONTRACTS_CASE",
+          "amount_expr": "30",
+          "probability_expr": "OPENABLES_PROP"
+        },
+        {
+          "item_code": "BLACK_SCALES",
+          "amount_expr": "1250",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "AMETHYST",
+          "amount_expr": "750",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "CANARY_LOG",
+          "amount_expr": "580",
+          "probability_expr": "1 / 12"
+        },
+        {
+          "item_code": "RAW_WHALE",
+          "amount_expr": "750",
+          "probability_expr": "1 / 10"
+        },
+        {
+          "item_code": "SUNSTONE_ORE",
+          "amount_expr": "550",
+          "probability_expr": "1 / 8"
+        },
+        {
+          "item_code": "COINS",
+          "amount_expr": "750_000",
+          "probability_expr": ""
+        }
+      ],
+      "lamp_expr": "1, EXPERT_XP, 100, AllSkillIdList, LAMP_PROP"
+    }
+  ]
+}

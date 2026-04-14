@@ -1,0 +1,5 @@
+{
+  "version": "13.2.0",
+  "download_url": "https://raw.githubusercontent.com/Lynamator123/RockyIdleReader/main/Compiled/RockyIdleReader.exe",
+  "notes": "Profile/state parsing hardening, verbose diagnostics, optimizer fixes, and mining next unlock support."
+}

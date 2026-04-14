@@ -1,0 +1,50 @@
+{
+  "source": "Items-DFGG5v9F.js.map",
+  "extracted_at_utc": "2026-04-11T17:18:52.106368+00:00",
+  "item_type_descriptions": [
+    {
+      "item_type": "EQUIPABLE",
+      "description": "Click the item while it's inside your inventory to equip the item."
+    },
+    {
+      "item_type": "POTION",
+      "description": "Click the potion while it's inside your inventory to gain a skill level boosts for a short duration, when unlocked you can drink potions automatically while in combat."
+    },
+    {
+      "item_type": "FOOD",
+      "description": "Click the food while it's inside your inventory to heal some health, when unlocked you can eat food automatically."
+    },
+    {
+      "item_type": "XP_LAMP",
+      "description": "Click the lamp while it's inside your inventory to collect your well deserved experience."
+    },
+    {
+      "item_type": "OPENABLE",
+      "description": "Click the openable item while it's inside your inventory to gain some nice rewards."
+    },
+    {
+      "item_type": "CONTRACT",
+      "description": "Click the contract while in your inventory to start the challenges."
+    },
+    {
+      "item_type": "EXTRA_CONTAINER",
+      "description": "Items that provide additional storage space for the player to carry more items, when gaining any of the allowed items while having the container in the inventory will cause the items to go directly into the container."
+    },
+    {
+      "item_type": "DEFAULT",
+      "description": "It's just a basic item."
+    },
+    {
+      "item_type": "PET",
+      "description": "Pets are purely for style points."
+    },
+    {
+      "item_type": "PRAYER_UNLOCKS",
+      "description": "Items that unlock new prayers when the item is clicked while being inside the inventory. Note: A prayer can only be unlocked once."
+    },
+    {
+      "item_type": "TOKEN",
+      "description": "Special items used to kill 1 boss per token. There are 6 Skilling tokens and 6 Boss Tokens in the game."
+    }
+  ]
+}

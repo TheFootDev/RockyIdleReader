@@ -1,0 +1,67 @@
+{
+  "source": "MonsterUtil-DEqDMLKR.js.map",
+  "extracted_at_utc": "2026-04-11T17:20:43.455199+00:00",
+  "signatures": [
+    {
+      "function": "calculateCombatLevelColor",
+      "params": [
+        "enemyCombatLevel: number",
+        "currentCombatLevel: number"
+      ],
+      "return_key_candidates": []
+    },
+    {
+      "function": "getMonsterDropTableItems",
+      "params": [
+        "items: ItemDataWithSource[]"
+      ],
+      "return_key_candidates": []
+    },
+    {
+      "function": "handleMonsterDropTableUpdates",
+      "params": [
+        "items: ItemDataWithSource[]",
+        "updateFn: UpdateDropFromDropTableFunction"
+      ],
+      "return_key_candidates": []
+    },
+    {
+      "function": "getMonsterDropRollFromMonsterKc",
+      "params": [
+        "monsterKillStats: MonsterIdDictionary | undefined | null",
+        "monsterId: MonsterIds | null | undefined",
+        "tier: number"
+      ],
+      "return_key_candidates": []
+    },
+    {
+      "function": "getMonsterDropRoll",
+      "params": [
+        "monsterKillStats: MonsterIdDictionary | undefined | null",
+        "monsterId: MonsterIds | null | undefined",
+        "tier: number",
+        "dropRolls: number",
+        "multiplier?: number"
+      ],
+      "return_key_candidates": [
+        "newRollsForKc",
+        "newRollsForLoot"
+      ]
+    },
+    {
+      "function": "getKillsNeededForGoalKc",
+      "params": [
+        "goalKc: number",
+        "monsterKillStats: MonsterIdDictionary | undefined | null",
+        "monsterId: MonsterIds | null | undefined",
+        "tier: number",
+        "dropRolls: number"
+      ],
+      "return_key_candidates": [
+        "killsForNextTier",
+        "newRollsForKc",
+        "newRollsForLoot"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "source": "Items-DFGG5v9F.js.map",
+  "extracted_at_utc": "2026-04-11T17:18:52.106368+00:00",
+  "source_file": "../../src/Components/Items/ItemsPage/KeyItemDetails.tsx",
+  "key_to_chest_mappings": [
+    {
+      "key_item_code": "EASY_KEY",
+      "chest_code": "EASY_CHEST"
+    },
+    {
+      "key_item_code": "MEDIUM_KEY",
+      "chest_code": "MEDIUM_CHEST"
+    },
+    {
+      "key_item_code": "HARD_KEY",
+      "chest_code": "HARD_CHEST"
+    },
+    {
+      "key_item_code": "EXPERT_KEY",
+      "chest_code": "EXPERT_CHEST"
+    }
+  ]
+}
