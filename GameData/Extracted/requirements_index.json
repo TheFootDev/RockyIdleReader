@@ -1,0 +1,54 @@
+{
+  "extracted_at_utc": "2026-04-11T17:17:03.109928+00:00",
+  "quest_requirement_codes": [
+    "BANK_ROBBERY",
+    "CROP_MASTER",
+    "DRAGONS_LAIR",
+    "FINAL_OFFER",
+    "HARVEST_TIME",
+    "HOT_GATES",
+    "ILLEGAL_LOGGING",
+    "JADE_RESCUE",
+    "MEET_ANGELA",
+    "MINING_LEGEND",
+    "PROTECT_THE_REEF",
+    "RAGNAR",
+    "REPLANT",
+    "ROMAN_INVADERS",
+    "SCORPION_HUNTER",
+    "SPEAR_FISHER",
+    "STOLEN_SCALES",
+    "STORM_FALLEN_OAK",
+    "THE_MONK_1",
+    "WIZARD_CONTEST"
+  ],
+  "diary_requirement_codes": [
+    "FIELDS",
+    "FOREST",
+    "FORTRESS",
+    "MARKET",
+    "MINE",
+    "SEA",
+    "TEMPLE"
+  ],
+  "slayer_unlock_requirement_codes": [
+    "SLAYER_BOOTS",
+    "SLAYER_SANDALS",
+    "SLAYER_SHOES"
+  ],
+  "skill_requirement_codes": [
+    "Alchemy",
+    "Arcanery",
+    "Cooking",
+    "Crafting",
+    "Farming",
+    "Fishing",
+    "Fletching",
+    "Magic",
+    "Mining",
+    "Prayer",
+    "Ranged",
+    "Smithing",
+    "Woodcutting"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "extracted_at_utc": "2026-04-11T17:22:57.012985+00:00",
+  "parsed_files": [
+    "GameData/ResourceClueVisualMultiplier-B1bleDHd.js",
+    "GameData/ResourceClueVisualMultiplier-B1bleDHd.js.map",
+    "GameData/ResourcesCompletedShowcase-Cp6Ul4zl.js",
+    "GameData/ResourcesCompletedShowcase-Cp6Ul4zl.js.map",
+    "GameData/ResourcesItemDisplay-Ci2vvveh.js",
+    "GameData/ResourcesItemDisplay-Ci2vvveh.js.map",
+    "GameData/RollItemDropsFromMonster-14Z62e0e.js",
+    "GameData/RollItemDropsFromMonster-14Z62e0e.js.map",
+    "GameData/ShopItemSkillReq-Cwzr4gpT.js",
+    "GameData/ShopItemSkillReq-Cwzr4gpT.js.map",
+    "GameData/Shops-DrQFkQs1.js",
+    "GameData/Shops-DrQFkQs1.js.map"
+  ],
+  "output_files": [
+    "GameData/Extracted/resource_clue_visual_multiplier.json",
+    "GameData/Extracted/resources_completed_showcase_contract.json",
+    "GameData/Extracted/resources_item_display_contract.json",
+    "GameData/Extracted/roll_item_drops_monster_contract.json",
+    "GameData/Extracted/shop_item_skill_req_contract.json",
+    "GameData/Extracted/shops_bundle_metadata_v2.json",
+    "GameData/Extracted/sources_manifest_batch_resources_shops.json"
+  ]
+}

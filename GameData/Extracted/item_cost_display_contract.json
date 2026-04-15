@@ -1,0 +1,23 @@
+{
+  "source": "ItemCostDisplay-CJwCMGYe.js.map",
+  "extracted_at_utc": "2026-04-11T17:18:31.149219+00:00",
+  "component_name": "ItemCostDisplay",
+  "props_detected": [
+    "big",
+    "className",
+    "currentLootMultiplier",
+    "itemCost",
+    "shouldShowOverlay",
+    "unlimitedRunesType",
+    "withLink",
+    "withdrawAllAmounts",
+    "withdrawFromBankLocation"
+  ],
+  "behavior_flags": {
+    "uses_withdraw_icon_toggle": true,
+    "supports_unlimited_runes_overlay": true,
+    "supports_item_db_link": true,
+    "scales_amount_by_loot_multiplier": true
+  },
+  "source_file": "../../src/Components/UtilityComponents/UIDisplays/ItemCostDisplay.tsx"
+}

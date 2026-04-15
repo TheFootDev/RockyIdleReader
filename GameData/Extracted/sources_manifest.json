@@ -1,0 +1,34 @@
+{
+  "extracted_at_utc": "2026-04-11T17:17:03.110540+00:00",
+  "parsed_files": [
+    "GameData/AllChests-cEZlHwgz.js",
+    "GameData/AllChests-cEZlHwgz.js.map",
+    "GameData/AllShopsData-DNqskQe7.js",
+    "GameData/AllShopsData-DNqskQe7.js.map"
+  ],
+  "chests_map_sources": [
+    "../../src/data/Chests/AllChests.ts"
+  ],
+  "shops_map_sources": [
+    "../../src/data/AllShopsData/Shops/FishingShop.ts",
+    "../../src/data/AllShopsData/Shops/SharedShopItems.ts",
+    "../../src/data/AllShopsData/Shops/MeleeShop.ts",
+    "../../src/data/AllShopsData/Shops/MiningShop.ts",
+    "../../src/data/AllShopsData/Shops/WoodcuttingShop.ts",
+    "../../src/data/AllShopsData/Shops/SmithingShop.ts",
+    "../../src/data/AllShopsData/Shops/CookingShop.ts",
+    "../../src/data/AllShopsData/Shops/FarmingShop.ts",
+    "../../src/data/AllShopsData/Shops/PrayerShop.ts",
+    "../../src/data/AllShopsData/Shops/CraftingShop.ts",
+    "../../src/data/AllShopsData/Shops/RangedShop.ts",
+    "../../src/data/AllShopsData/Shops/FlecthingShop.ts",
+    "../../src/data/AllShopsData/Shops/MagicShop.ts",
+    "../../src/data/AllShopsData/Shops/ArcaneryShop.tsx",
+    "../../src/data/AllShopsData/Shops/AchievementShop.ts",
+    "../../src/data/AllShopsData/Shops/QuestItemShop.ts",
+    "../../src/data/AllShopsData/Shops/AlchemyShop.ts",
+    "../../src/data/AllShopsData/Shops/AssemblingShop.ts",
+    "../../src/data/AllShopsData/Shops/OtherShop.tsx",
+    "../../src/data/AllShopsData/AllShopsData.ts"
+  ]
+}

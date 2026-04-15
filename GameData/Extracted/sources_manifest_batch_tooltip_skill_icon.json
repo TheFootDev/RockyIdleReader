@@ -1,0 +1,11 @@
+{
+  "extracted_at_utc": "2026-04-11T17:25:10.368196+00:00",
+  "parsed_files": [
+    "GameData/TooltipWithSkillIcon-XsnLyOuZ.js",
+    "GameData/TooltipWithSkillIcon-XsnLyOuZ.js.map"
+  ],
+  "output_files": [
+    "GameData/Extracted/tooltip_with_skill_icon_contract.json",
+    "GameData/Extracted/sources_manifest_batch_tooltip_skill_icon.json"
+  ]
+}
