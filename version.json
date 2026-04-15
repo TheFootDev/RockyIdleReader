@@ -1,5 +1,5 @@
 {
-  "version": "16",
+  "version": "18",
   "download_url": "https://raw.githubusercontent.com/Lynamator123/RockyIdleReader/main/Compiled/RockyIdleReader.exe",
-  "notes": "Combat estimates reworked (style-specific melee/ranged/magic with prayer and spell-aware inputs), manual updater flow with in-app download button, app_data moved to LocalAppData storage, and Overview card order updated (Account Completion above Slayer)."
+  "notes": "Gear page hidden from navigation, Feed Density moved under Dev Mode, plus recent combat estimate and updater/storage improvements."
 }
