@@ -149,6 +149,9 @@ class RIR_by_Foot(ctk.CTk):
         self.skill_name_labels = {}
         self.open_popouts = []
         self.latest_feed_items = []
+        self.gear_slot_labels = {}
+        self.gear_set_summary_labels = {}
+        self.boost_ready_notified = {"combat": None, "skilling": None}
 
         # --- FILES & DATA ---
         self.db_file = "skills_db.json"
@@ -1073,6 +1076,7 @@ class RIR_by_Foot(ctk.CTk):
                 "no_slayer_task_notified": self.no_slayer_task_notified,
                 "initial_load_done": self.initial_load_done,
                 "session_gp_earned": self.session_gp_earned,
+                "boost_ready_notified": self.boost_ready_notified,
             }
             self.set_store_section("session_cache", payload)
         except Exception:
@@ -1134,6 +1138,7 @@ class RIR_by_Foot(ctk.CTk):
             self.recent_changed_item_ids = set()
         self.no_slayer_task_count = int(payload.get("no_slayer_task_count", 0) or 0)
         self.no_slayer_task_notified = bool(payload.get("no_slayer_task_notified", False))
+        self.boost_ready_notified = payload.get("boost_ready_notified", {"combat": None, "skilling": None}) if isinstance(payload.get("boost_ready_notified"), dict) else {"combat": None, "skilling": None}
         # Always revalidate profile against current save files on startup.
         # This avoids stale cached profile IDs causing no-sync loops.
         self.initial_load_done = False
@@ -1203,6 +1208,7 @@ class RIR_by_Foot(ctk.CTk):
         self.refresh_explorer_view()
         self.update_overview_snapshot(state)
         self.update_optimal_snapshot(state)
+        self.update_gear_snapshot(state)
 
         age_text = f"RESTORED {int(cache_age // 60)}M AGO" if cache_age >= 60 else "RESTORED"
         self.safe_ui(self.status_lbl, "configure", text=age_text, text_color="#8ab4f8")
@@ -2562,6 +2568,9 @@ class RIR_by_Foot(ctk.CTk):
         self.section_frames["ITEMS"] = ctk.CTkFrame(self.content_area, fg_color="transparent")
         self._build_items_page(self.section_frames["ITEMS"])
 
+        self.section_frames["GEAR"] = ctk.CTkFrame(self.content_area, fg_color="transparent")
+        self._build_gear_page(self.section_frames["GEAR"])
+
         self.section_frames["OPTIMAL"] = ctk.CTkFrame(self.content_area, fg_color="transparent")
         self._build_optimal_page(self.section_frames["OPTIMAL"])
 
@@ -2573,6 +2582,7 @@ class RIR_by_Foot(ctk.CTk):
         self._add_nav_btn("OVERVIEW", "◫", "OVERVIEW")
         self._add_nav_btn("SKILLS",   "✦", "SKILLS")
         self._add_nav_btn("ITEMS",    "◈", "ITEMS")
+        self._add_nav_btn("GEAR",     "⚔", "GEAR")
         self._add_nav_btn("OPTIMAL",  "◎", "OPTIMAL")
 
         self._add_nav_btn("SETTINGS", "✱", "SETTINGS")
@@ -2841,6 +2851,68 @@ class RIR_by_Foot(ctk.CTk):
         self.item_feed = ctk.CTkFrame(self.items_scroll, fg_color="transparent")
         self.item_feed.pack(fill="both", expand=True)
 
+    def _build_gear_page(self, parent):
+        C = self._C
+        self.gear_slot_labels = {}
+        self.gear_set_summary_labels = {}
+
+        scroll = ctk.CTkScrollableFrame(parent, fg_color="transparent", border_width=0)
+        scroll.pack(fill="both", expand=True, padx=14, pady=14)
+
+        ctk.CTkLabel(scroll, text="Gear & Combat", font=("Segoe UI", 13, "bold"), text_color=C["txt"]).pack(anchor="w")
+        ctk.CTkLabel(
+            scroll,
+            text="Current equipment set, combat boost points, and slot multipliers from level boosts.",
+            font=("Segoe UI", 10),
+            text_color=C["dim"],
+        ).pack(anchor="w", pady=(2, 10))
+
+        top_card = ctk.CTkFrame(scroll, fg_color=C["card"], corner_radius=12, border_width=1, border_color=C["card_bd"])
+        top_card.pack(fill="x", pady=(0, 10))
+        self.gear_current_set_lbl = self.create_row(top_card, "ACTIVE SET", "--", C["gold"])
+        self.gear_style_lbl = self.create_row(top_card, "WEAPON STYLE", "--", C["txt"])
+        self.gear_points_lbl = self.create_row(top_card, "COMBAT BOOST POINTS", "0", C["blue"])
+        self.gear_max_hit_lbl = self.create_row(top_card, "MAX HIT MULTIPLIER", "x1.00", C["green"])
+        self.gear_melee_hit_lbl = self.create_row(top_card, "EST. MELEE MAX HIT", "--", C["txt"])
+        self.gear_ranged_hit_lbl = self.create_row(top_card, "EST. RANGED MAX HIT", "--", C["txt"])
+        self.gear_magic_hit_lbl = self.create_row(top_card, "EST. MAGIC MAX HIT", "--", C["txt"])
+        ctk.CTkFrame(top_card, height=6, fg_color="transparent").pack()
+
+        gear_card = ctk.CTkFrame(scroll, fg_color=C["card"], corner_radius=12, border_width=1, border_color=C["card_bd"])
+        gear_card.pack(fill="x", pady=(0, 10))
+        _gh = ctk.CTkFrame(gear_card, fg_color="transparent")
+        _gh.pack(fill="x", padx=16, pady=(12, 4))
+        ctk.CTkLabel(_gh, text="EQUIPPED ITEMS", font=("Segoe UI", 11, "bold"), text_color=C["gold"]).pack(side="left")
+
+        slot_order = ["weapon", "shield", "head", "body", "legs", "feet", "cape", "neck", "ring", "ammo"]
+        for slot in slot_order:
+            self.gear_slot_labels[slot] = self.create_row(gear_card, slot.upper(), "--", C["txt"])
+        ctk.CTkFrame(gear_card, height=8, fg_color="transparent").pack()
+
+        stat_card = ctk.CTkFrame(scroll, fg_color=C["card"], corner_radius=12, border_width=1, border_color=C["card_bd"])
+        stat_card.pack(fill="x", pady=(0, 10))
+        _sh = ctk.CTkFrame(stat_card, fg_color="transparent")
+        _sh.pack(fill="x", padx=16, pady=(12, 4))
+        ctk.CTkLabel(_sh, text="CURRENT SET TOTAL STATS", font=("Segoe UI", 11, "bold"), text_color=C["gold"]).pack(side="left")
+        self.gear_stat_labels = {
+            "totalAccuracyMelee": self.create_row(stat_card, "MELEE ACCURACY", "--", C["txt"]),
+            "totalAccuracyRanged": self.create_row(stat_card, "RANGED ACCURACY", "--", C["txt"]),
+            "totalAccuracyMagic": self.create_row(stat_card, "MAGIC ACCURACY", "--", C["txt"]),
+            "totalMeleeDmg": self.create_row(stat_card, "MELEE DAMAGE BONUS", "--", C["txt"]),
+            "totalRangedDmg": self.create_row(stat_card, "RANGED DAMAGE BONUS", "--", C["txt"]),
+            "totalMagicDmg": self.create_row(stat_card, "MAGIC DAMAGE BONUS", "--", C["txt"]),
+        }
+        ctk.CTkFrame(stat_card, height=8, fg_color="transparent").pack()
+
+        set_card = ctk.CTkFrame(scroll, fg_color=C["card"], corner_radius=12, border_width=1, border_color=C["card_bd"])
+        set_card.pack(fill="x")
+        _set_h = ctk.CTkFrame(set_card, fg_color="transparent")
+        _set_h.pack(fill="x", padx=16, pady=(12, 4))
+        ctk.CTkLabel(_set_h, text="SET SUMMARIES", font=("Segoe UI", 11, "bold"), text_color=C["gold"]).pack(side="left")
+        for set_id in ("0", "1", "2"):
+            self.gear_set_summary_labels[set_id] = self.create_row(set_card, f"SET {int(set_id) + 1}", "--", C["dim"])
+        ctk.CTkFrame(set_card, height=8, fg_color="transparent").pack()
+
     def _build_optimal_page(self, parent):
         C = self._C
         self.optimal_cards = {}
@@ -2989,29 +3061,37 @@ class RIR_by_Foot(ctk.CTk):
         self.webhook_entry.insert(0, self.config.get("webhook_url", ""))
         self.webhook_entry.bind("<FocusOut>", lambda e: self.on_webhook_url_change())
 
-        _tools_row = ctk.CTkFrame(self.settings_container, fg_color="transparent")
-        _tools_row.pack(fill="x", pady=(0, 10))
-        ctk.CTkButton(_tools_row, text="EXPORT DATA", height=34,
-                  fg_color=C["nav_act"], hover_color=C["card"], text_color=C["txt"],
-                  font=("Segoe UI", 10, "bold"), command=self.export_app_data).pack(side="left", fill="x", expand=True, padx=(0, 6))
-        ctk.CTkButton(_tools_row, text="IMPORT DATA", height=34,
-                  fg_color=C["nav_act"], hover_color=C["card"], text_color=C["txt"],
-                  font=("Segoe UI", 10, "bold"), command=self.import_app_data).pack(side="left", fill="x", expand=True, padx=(6, 0))
+        if self.dev_mode:
+            ctk.CTkLabel(
+                self.settings_container,
+                text="Dev Tools",
+                font=("Segoe UI", 11, "bold"),
+                text_color=C["dim"],
+            ).pack(anchor="w", pady=(0, 6))
 
-        ctk.CTkButton(self.settings_container, text="OPEN HEALTH CHECKS", height=34,
-                  fg_color=C["nav_act"], hover_color=C["card"], text_color=C["txt"],
-                  font=("Segoe UI", 11, "bold"), command=self.show_health_popup).pack(fill="x", pady=(0, 12))
+            _tools_row = ctk.CTkFrame(self.settings_container, fg_color="transparent")
+            _tools_row.pack(fill="x", pady=(0, 10))
+            ctk.CTkButton(_tools_row, text="EXPORT DATA", height=34,
+                      fg_color=C["nav_act"], hover_color=C["card"], text_color=C["txt"],
+                      font=("Segoe UI", 10, "bold"), command=self.export_app_data).pack(side="left", fill="x", expand=True, padx=(0, 6))
+            ctk.CTkButton(_tools_row, text="IMPORT DATA", height=34,
+                      fg_color=C["nav_act"], hover_color=C["card"], text_color=C["txt"],
+                      font=("Segoe UI", 10, "bold"), command=self.import_app_data).pack(side="left", fill="x", expand=True, padx=(6, 0))
 
-        ctk.CTkButton(
-            self.settings_container,
-            text="WRITE DESKTOP LOG",
-            height=34,
-            fg_color=C["nav_act"],
-            hover_color=C["card"],
-            text_color=C["txt"],
-            font=("Segoe UI", 11, "bold"),
-            command=self.write_manual_diagnostic_log,
-        ).pack(fill="x", pady=(0, 12))
+            ctk.CTkButton(self.settings_container, text="OPEN HEALTH CHECKS", height=34,
+                      fg_color=C["nav_act"], hover_color=C["card"], text_color=C["txt"],
+                      font=("Segoe UI", 11, "bold"), command=self.show_health_popup).pack(fill="x", pady=(0, 12))
+
+            ctk.CTkButton(
+                self.settings_container,
+                text="WRITE DESKTOP LOG",
+                height=34,
+                fg_color=C["nav_act"],
+                hover_color=C["card"],
+                text_color=C["txt"],
+                font=("Segoe UI", 11, "bold"),
+                command=self.write_manual_diagnostic_log,
+            ).pack(fill="x", pady=(0, 12))
 
         ctk.CTkButton(
             self.settings_container,
@@ -3036,6 +3116,252 @@ class RIR_by_Foot(ctk.CTk):
 
     def setup_settings_ui(self):
         pass  # legacy stub
+
+    def _combat_style_name(self, style_id):
+        style_map = {
+            1001: "Melee (Defence)",
+            1002: "Melee",
+            1003: "Melee",
+            1004: "Melee (Defence)",
+            1005: "Magic",
+            1006: "Magic (Defence)",
+            1007: "Ranged (Defence)",
+            1008: "Ranged",
+        }
+        try:
+            sid = int(style_id)
+        except (TypeError, ValueError):
+            return "Unknown"
+        return style_map.get(sid, f"Style {sid}")
+
+    def _combat_max_hit_multiplier(self, combat_points):
+        tiers = [
+            (100, 1.5), (1500, 1.6), (3500, 1.6), (5000, 1.6), (8000, 1.8), (10500, 1.8),
+            (14500, 1.8), (16500, 2.0), (20500, 2.0), (22500, 2.0), (26000, 2.4), (28000, 2.4),
+            (32000, 2.4), (35000, 2.6), (41000, 2.6), (44000, 2.6), (52000, 2.8), (56000, 2.8),
+            (64000, 3.0), (68000, 3.0), (76000, 3.2), (80000, 3.2), (88000, 3.4), (92000, 3.4),
+            (100000, 3.6), (104000, 3.6), (112000, 3.8), (116000, 3.8), (125000, 4.0), (130000, 4.0),
+            (140000, 4.2), (146000, 4.2), (158000, 4.4), (164000, 4.4), (176000, 4.6), (182000, 4.6),
+            (194000, 4.8), (200000, 4.8), (212000, 5.0), (218000, 5.0),
+        ]
+        try:
+            pts = int(combat_points or 0)
+        except (TypeError, ValueError):
+            pts = 0
+        current = 1.0
+        for threshold, mult in tiers:
+            if pts >= threshold:
+                current = mult
+            else:
+                break
+        return current
+
+    def _skill_level_from_state(self, state, skill_id):
+        if not isinstance(state, dict):
+            return 1
+        skills = state.get("skills", {}) if isinstance(state.get("skills"), dict) else {}
+        row = skills.get(str(skill_id), {}) if isinstance(skills, dict) else {}
+        if not isinstance(row, dict):
+            return 1
+        for key in ("boostedLevel", "level"):
+            try:
+                value = int(row.get(key) or 0)
+            except (TypeError, ValueError):
+                value = 0
+            if value > 0:
+                return value
+        return 1
+
+    def _prayer_style_bonus(self, prayer_id, style_name):
+        style = str(style_name or "").lower()
+        prayer_bonus_by_id = {
+            1000: {"melee": 5},
+            1001: {"melee": 12},
+            1002: {"melee": 18},
+            1003: {"melee": 28},
+            1004: {"melee": 40},
+            1200: {"ranged": 5},
+            1201: {"ranged": 12},
+            1202: {"ranged": 18},
+            1203: {"ranged": 28},
+            1204: {"ranged": 40},
+            1300: {"magic": 5},
+            1301: {"magic": 12},
+            1302: {"magic": 18},
+            1303: {"magic": 28},
+            1304: {"magic": 40},
+        }
+        try:
+            pid = int(prayer_id)
+        except (TypeError, ValueError):
+            return 0.0
+        return float(prayer_bonus_by_id.get(pid, {}).get(style, 0.0))
+
+    def _estimate_style_max_hit(self, offensive_level, damage_bonus, max_hit_multiplier, prayer_bonus_percent=0.0):
+        try:
+            level = max(1.0, float(offensive_level or 1))
+        except (TypeError, ValueError):
+            level = 1.0
+        try:
+            bonus = max(0.0, float(damage_bonus or 0))
+        except (TypeError, ValueError):
+            bonus = 0.0
+        try:
+            mult = max(1.0, float(max_hit_multiplier or 1))
+        except (TypeError, ValueError):
+            mult = 1.0
+        try:
+            prayer_bonus = max(0.0, float(prayer_bonus_percent or 0.0))
+        except (TypeError, ValueError):
+            prayer_bonus = 0.0
+
+        effective_level = math.floor(level * (1.0 + (prayer_bonus / 100.0))) + 8
+        base_hit = math.floor(((effective_level * (bonus + 64.0)) + 320.0) / 640.0)
+        estimate = math.floor(base_hit * mult)
+        return max(1, int(estimate))
+
+    def _slot_upgrade_level(self, slot_name, combat_points):
+        steps = [
+            (2500, ("neck", "shield", "ammo", "cape"), 1),
+            (6500, ("legs", "body", "head"), 1),
+            (12500, ("weapon", "ring", "feet"), 1),
+            (18500, ("neck", "shield", "ammo", "cape"), 2),
+            (24000, ("legs", "body", "head"), 2),
+            (30000, ("weapon", "ring", "feet"), 2),
+            (38000, ("neck", "shield", "ammo", "cape"), 3),
+            (48000, ("legs", "body", "head"), 3),
+            (60000, ("weapon", "ring", "feet"), 3),
+            (72000, ("neck", "shield", "ammo", "cape"), 4),
+            (84000, ("legs", "body", "head"), 4),
+            (96000, ("weapon", "ring", "feet"), 4),
+            (108000, ("neck", "shield", "ammo", "cape"), 5),
+            (120000, ("legs", "body", "head"), 5),
+            (135000, ("weapon", "ring", "feet"), 5),
+            (152000, ("neck", "shield", "ammo", "cape"), 6),
+            (170000, ("legs", "body", "head"), 6),
+            (188000, ("weapon", "ring", "feet"), 6),
+            (206000, ("neck", "shield", "ammo", "cape"), 7),
+            (223000, ("legs", "body", "head"), 7),
+            (228000, ("weapon", "ring", "feet"), 7),
+        ]
+        try:
+            pts = int(combat_points or 0)
+        except (TypeError, ValueError):
+            pts = 0
+        level = 0
+        slot = str(slot_name or "").lower()
+        for threshold, slot_group, step_level in steps:
+            if pts >= threshold and slot in slot_group:
+                level = max(level, step_level)
+        return level
+
+    def _slot_multiplier(self, slot_name, combat_points):
+        level_to_multiplier = {0: 1.0, 1: 1.05, 2: 1.10, 3: 1.20, 4: 1.40, 5: 1.60, 6: 1.80, 7: 2.00}
+        level = self._slot_upgrade_level(slot_name, combat_points)
+        return level_to_multiplier.get(level, 1.0)
+
+    def update_gear_snapshot(self, state):
+        if not hasattr(self, "gear_current_set_lbl"):
+            return
+
+        equipped_items = state.get("equippedItems", {}) if isinstance(state, dict) else {}
+        sets = equipped_items.get("sets", {}) if isinstance(equipped_items, dict) else {}
+        current_set_raw = equipped_items.get("currentSet", 0) if isinstance(equipped_items, dict) else 0
+        current_set_id = str(current_set_raw)
+        current_set = sets.get(current_set_id, {}) if isinstance(sets, dict) else {}
+
+        level_boosts = state.get("levelBoosts", {}) if isinstance(state, dict) else {}
+        combat_points = level_boosts.get("combatLevelBoostsPoints", 0) if isinstance(level_boosts, dict) else 0
+        max_hit_mult = self._combat_max_hit_multiplier(combat_points)
+        melee_level = self._skill_level_from_state(state, 1002)
+        ranged_level = self._skill_level_from_state(state, 1009)
+        magic_level = self._skill_level_from_state(state, 1015)
+        current_prayer = current_set.get("currentPrayer") if isinstance(current_set, dict) else None
+        melee_prayer_bonus = self._prayer_style_bonus(current_prayer, "melee")
+        ranged_prayer_bonus = self._prayer_style_bonus(current_prayer, "ranged")
+        magic_prayer_bonus = self._prayer_style_bonus(current_prayer, "magic")
+
+        style_name = self._combat_style_name(current_set.get("currentWeaponStyle")) if isinstance(current_set, dict) else "Unknown"
+        self.safe_ui(self.gear_current_set_lbl, "configure", text=f"Set {int(current_set_id) + 1}" if current_set_id.isdigit() else "Set --")
+        self.safe_ui(self.gear_style_lbl, "configure", text=style_name)
+        self.safe_ui(self.gear_points_lbl, "configure", text=self.format_number(combat_points))
+        self.safe_ui(self.gear_max_hit_lbl, "configure", text=f"x{max_hit_mult:.2f}")
+
+        slot_order = ["weapon", "shield", "head", "body", "legs", "feet", "cape", "neck", "ring", "ammo"]
+        for slot in slot_order:
+            label = self.gear_slot_labels.get(slot)
+            if not label:
+                continue
+            slot_item = current_set.get(slot) if isinstance(current_set, dict) else None
+            if isinstance(slot_item, dict) and slot_item.get("id") is not None:
+                item_id = slot_item.get("id")
+                amount = slot_item.get("amount", 1)
+                item_name = self.get_item_name(item_id)
+                mult = self._slot_multiplier(slot, combat_points)
+                text = f"{item_name} x{amount} | x{mult:.2f}"
+            else:
+                text = "--"
+            self.safe_ui(label, "configure", text=text)
+
+        stat_keys = [
+            "totalAccuracyMelee",
+            "totalAccuracyRanged",
+            "totalAccuracyMagic",
+            "totalMeleeDmg",
+            "totalRangedDmg",
+            "totalMagicDmg",
+        ]
+        total_stats = current_set.get("totalStats", {}) if isinstance(current_set, dict) else {}
+        melee_est = self._estimate_style_max_hit(
+            melee_level,
+            total_stats.get("totalMeleeDmg", 0),
+            max_hit_mult,
+            melee_prayer_bonus,
+        )
+        ranged_est = self._estimate_style_max_hit(
+            ranged_level,
+            total_stats.get("totalRangedDmg", 0),
+            max_hit_mult,
+            ranged_prayer_bonus,
+        )
+        magic_est = self._estimate_style_max_hit(
+            magic_level,
+            total_stats.get("totalMagicDmg", 0),
+            max_hit_mult,
+            magic_prayer_bonus,
+        )
+        self.safe_ui(self.gear_melee_hit_lbl, "configure", text=str(melee_est))
+        self.safe_ui(self.gear_ranged_hit_lbl, "configure", text=str(ranged_est))
+        self.safe_ui(self.gear_magic_hit_lbl, "configure", text=str(magic_est))
+        for key in stat_keys:
+            label = self.gear_stat_labels.get(key)
+            if not label:
+                continue
+            value = total_stats.get(key, 0) if isinstance(total_stats, dict) else 0
+            try:
+                value_num = float(value)
+                if abs(value_num - round(value_num)) < 0.0001:
+                    value_text = str(int(round(value_num)))
+                else:
+                    value_text = f"{value_num:.2f}"
+            except (TypeError, ValueError):
+                value_text = "0"
+            self.safe_ui(label, "configure", text=value_text)
+
+        for set_id, lbl in self.gear_set_summary_labels.items():
+            set_payload = sets.get(set_id, {}) if isinstance(sets, dict) else {}
+            if not isinstance(set_payload, dict) or not set_payload:
+                self.safe_ui(lbl, "configure", text="--")
+                continue
+            weapon = set_payload.get("weapon")
+            weapon_name = self.get_item_name(weapon.get("id")) if isinstance(weapon, dict) and weapon.get("id") is not None else "None"
+            style = self._combat_style_name(set_payload.get("currentWeaponStyle"))
+            dmg_stats = set_payload.get("totalStats", {}) if isinstance(set_payload.get("totalStats", {}), dict) else {}
+            melee_dmg = dmg_stats.get("totalMeleeDmg", 0)
+            range_dmg = dmg_stats.get("totalRangedDmg", 0)
+            magic_dmg = dmg_stats.get("totalMagicDmg", 0)
+            summary = f"{style} | {weapon_name} | M:{melee_dmg} R:{range_dmg} X:{magic_dmg}"
+            self.safe_ui(lbl, "configure", text=summary)
 
     # --- MONITORING ENGINE ---
     def process_state(self, state, source_label=None):
@@ -3233,6 +3559,7 @@ class RIR_by_Foot(ctk.CTk):
         self.save_multipliers_snapshot(self.extract_multiplier_snapshot(state))
         self.update_overview_snapshot(state)
         self.update_optimal_snapshot(state)
+        self.update_gear_snapshot(state)
         self.prev_state = state
         self.save_session_cache()
         self._set_status_text("SYNCED", text_color="#2ecc71", include_context=True)
@@ -3581,23 +3908,35 @@ class RIR_by_Foot(ctk.CTk):
         row = boosts.get(boost_key, {}) if isinstance(boosts, dict) else {}
         if not isinstance(row, dict):
             return None
-        try:
-            return int(row.get("coolDown"))
-        except (TypeError, ValueError):
-            return None
+        for key in ("coolDown", "cooldown", "cooldownTimestamp"):
+            try:
+                value = row.get(key)
+                if value is None:
+                    continue
+                return int(value)
+            except (TypeError, ValueError):
+                continue
+        return None
 
     def _check_boost_ready_alerts(self, prev_state, state, event_markers):
-        if not isinstance(prev_state, dict) or not isinstance(state, dict):
+        if not isinstance(state, dict):
             return
         now_ms = int(time.time() * 1000)
         for boost_key, label in (("combat", "Combat"), ("skilling", "Skilling")):
-            prev_cd = self._get_boost_cooldown_ms(prev_state, boost_key)
             curr_cd = self._get_boost_cooldown_ms(state, boost_key)
-            if prev_cd is None or curr_cd is None:
+            if curr_cd is None:
                 continue
-            if curr_cd <= now_ms and prev_cd > now_ms:
+            if curr_cd > now_ms:
+                self.boost_ready_notified[boost_key] = None
+                continue
+
+            prev_cd = self._get_boost_cooldown_ms(prev_state, boost_key) if isinstance(prev_state, dict) else None
+            already_notified = self.boost_ready_notified.get(boost_key) == curr_cd
+            crossed_ready = prev_cd is not None and prev_cd > now_ms
+            if crossed_ready or not already_notified:
                 msg = f"{label} boost is ready to activate."
                 event_markers.append(msg)
+                self.boost_ready_notified[boost_key] = curr_cd
                 if self.config.get("notify_boost_ready", False):
                     self.send_webhook("⚡ Boost Ready", msg)
 
