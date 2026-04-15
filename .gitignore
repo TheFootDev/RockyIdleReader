@@ -6,5 +6,4 @@
 
 # Keep only release artifacts tracked
 !version.json
-!Compiled/
-!Compiled/RockyIdleReader.exe
+!RockyIdleReader.exe
