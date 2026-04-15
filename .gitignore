@@ -1,23 +1,10 @@
-# Python cache and environments
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.venv/
+# Ignore everything by default
+*
 
-# Build artifacts
-dist/
-build/
-Compiled/build/
-*.tmp
-*.log
+# Keep this file tracked
+!.gitignore
 
-# Runtime-generated diagnostics and local artifacts
-FATAL_CRASH.txt
-rirbf_active.dat
-*.dat
-
-# OS/editor
-.DS_Store
-Thumbs.db
-.vscode/
+# Keep only release artifacts tracked
+!version.json
+!Compiled/
+!Compiled/RockyIdleReader.exe
